@@ -1,0 +1,17 @@
+<% content_for :title do %> <%= @post.title %> | My_Blog <% end %> <%
+content_for:head do %>
+<style>
+  /* 페이지 전용 스타일 */
+</style>
+<% end %>
+
+<article>
+  <h1><%= @post.title %></h1>
+  <p><%= @post.body%></p>
+</article>
+
+<% content_for :scripts do %>
+<script>
+  console.log("Post show ready");
+</script>
+<% end %>
