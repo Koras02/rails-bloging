@@ -1,7 +1,12 @@
-<!-- app/views/posts/index.html.erb -->
-<h1>Posts</h1>
+<h1>게시판</h1>
+<%= link_to '새 글 작성', new_post_path %>
+
 <ul>
   <% @posts.each do |post| %>
-  <li><%= post.title %></li>
+  <li>
+    <%= link_to post.title, post %> | <%= link_to '수정', edit_post_path(post)
+    %> | <%= button_to '삭제', post_path(post), method: :delete, data: {
+    turbo_confirm: "정말 삭제하시겠습니까?" } %>
+  </li>
   <% end %>
 </ul>
