@@ -1,2 +1,26 @@
 <h1>새글 작성</h1>
-<%= render 'form', post: @post %>
+
+<%= form_with model: @post, local: true do |form| %> <% if @post.errors.any? %>
+<div style="color: red">
+  <h2><%= pluralize(@post.errors.count, "error") %> 발생:</h2>
+  <ul>
+    <% @post.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div>
+  <%= form.label :title %><br />
+  <%= form.text_field :title %>
+</div>
+
+<div>
+  <%= form.label :content %><br />
+  <%= form.text_area :content %>
+</div>
+
+<div><%= form.submit "작성" %></div>
+
+<% end %>
